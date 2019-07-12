@@ -1,20 +1,25 @@
+<!-- messageForm.html -->
+
+{% extends 'board.html' %}
+
 {% block content %}
 <div class="formwrapper">
   <form method=post>
     <div class="sender">
-      {{ form.sender(placeholder='Joe Blah') }} {{ form.sender.label }}
+      {{ form.sender.label }} {{ form.sender(placeholder='Jaakko Parantainen') }}
       {% if form.sender.errors %}
         <ul class="errors">{% for error in form.sender.errors %}<li>{{ error }}</li>{% endfor %}</ul>
       {% endif %}
     </div>
     <div class="title">
-      {{ form.title }} {{ form.title.label }}
+      {{ form.title.label }} {{ form.title }}
       {% if form.title.errors %}
         <ul class="errors">{% for error in form.title.errors %}<li>{{ error }}</li>{% endfor %}</ul>
       {% endif %}
     </div>
     <div class="content">
-        {{ form.content }} {{ form.content.label }}
+        {{ form.content.label }}<br>
+        {{ form.content }}
         {% if form.content.errors %}
           <ul class="errors">{% for error in form.content.errors %}<li>{{ error }}</li>{% endfor %}</ul>
         {% endif %}
@@ -25,9 +30,5 @@
   </form>
 </div>
 
-{% for message in get_flashed_messages() %}
-<div class="alert alert-warning">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    {{ message }}
-</div>
-{% endfor %}
+
+{% endblock %}
