@@ -1,0 +1,33 @@
+{% block content %}
+<div class="formwrapper">
+  <form method=post>
+    <div class="sender">
+      {{ form.sender(placeholder='Joe Blah') }} {{ form.sender.label }}
+      {% if form.sender.errors %}
+        <ul class="errors">{% for error in form.sender.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+    <div class="title">
+      {{ form.title }} {{ form.title.label }}
+      {% if form.title.errors %}
+        <ul class="errors">{% for error in form.title.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+    <div class="content">
+        {{ form.content }} {{ form.content.label }}
+        {% if form.content.errors %}
+          <ul class="errors">{% for error in form.content.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+        {% endif %}
+      </div>
+    <div class="submitbutton">
+      <input id="submit" type="submit" value="Send">
+    </div>
+  </form>
+</div>
+
+{% for message in get_flashed_messages() %}
+<div class="alert alert-warning">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ message }}
+</div>
+{% endfor %}
