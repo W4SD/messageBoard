@@ -1,8 +1,5 @@
 <!-- messageForm.html -->
 
-{% extends 'board.html' %}
-
-{% block content %}
 <div class="formwrapper">
   <form method=post>
     <div class="sender">
@@ -12,14 +9,14 @@
       {% endif %}
     </div>
     <div class="title">
-      {{ form.title.label }} {{ form.title }}
+      {{ form.title.label }} {{ form.title(placeholder='Some Title') }}
       {% if form.title.errors %}
         <ul class="errors">{% for error in form.title.errors %}<li>{{ error }}</li>{% endfor %}</ul>
       {% endif %}
     </div>
     <div class="content">
         {{ form.content.label }}<br>
-        {{ form.content }}
+        {{ form.content(placeholder='Max 128 characters...') }}
         {% if form.content.errors %}
           <ul class="errors">{% for error in form.content.errors %}<li>{{ error }}</li>{% endfor %}</ul>
         {% endif %}
@@ -30,5 +27,3 @@
   </form>
 </div>
 
-
-{% endblock %}

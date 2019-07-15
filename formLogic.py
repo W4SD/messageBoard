@@ -1,6 +1,7 @@
 from wtforms import Form, StringField, validators, SubmitField, TextAreaField
 from wtforms.validators import ValidationError, DataRequired, Length
 
+
 class CreateMessage(Form):
         """Send message to the board Form"""
 
@@ -19,4 +20,13 @@ class CreateMessage(Form):
             DataRequired(message=('What say u?'))
         ])
 
+        #url = StringField()
+
         submit = SubmitField('Send')
+
+class ListMessages():
+    def printMessage(self, format=None):
+        if format is None:
+            print('listAllMessagesInBoard')
+        else:
+            return 'Some'
