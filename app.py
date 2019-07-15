@@ -22,7 +22,7 @@ def home():
         print('Message sent!')
         messagesInBoard.printMessage()
         addMessageCount(1)
-    return render_template("board.html",
+    return render_template("main.html",
                             form=sendMessageForm,
                             count=totalMessages)
 
