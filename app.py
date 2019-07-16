@@ -22,17 +22,16 @@ def home():
             sentMessage = ListMessages(request.form)
             allMessages.append(sentMessage)
             addMessageCount(1)
-            print('List has', len(allMessages), 'objects')
             msgBoardData = allMessages
         else:
             return render_template("main.html",
-                                form = thisMessage,
+                                form=thisMessage,
                                 count=totalMessages,
-                                msgBoard = allMessages)
+                                msgBoard=allMessages)
     return render_template("main.html",
                             form=sendMessageForm,
                             count=totalMessages,
-                            msgBoard = msgBoardData)
+                            msgBoard=msgBoardData)
 
 if __name__ == '__main__':
     app.secret_key = 'notSoSecret'

@@ -1,11 +1,11 @@
 from wtforms import Form, StringField, validators, SubmitField, TextAreaField
-from wtforms.validators import ValidationError, DataRequired, Length
+from wtforms.validators import ValidationError, DataRequired, Length, URL
 
 
 class CreateMessage(Form):
         """Send message to the board Form"""
 
-        sender = StringField('Name: ', validators=[
+        sender = StringField('Name: ', [
             Length(min=4, max=10, message=('Name should be 4-10 characters long')),
             DataRequired(message="Name is missing?")
             ])
@@ -20,7 +20,9 @@ class CreateMessage(Form):
             DataRequired(message=('You have nothing to say?'))
         ])
 
-        #url = StringField()
+        url = StringField('URL: ', [
+            URL()
+        ])
 
         submit = SubmitField('Send')
 
@@ -30,16 +32,10 @@ class ListMessages():
         self.name = attributes.get('sender')
         self.title = attributes.get('title')
         self.content = attributes.get('content')
-        print(self.name, self.title, self.content)
         
     def printMessage(self, format=None):
         
-        messageData = [self.name, self.title, self.content]
-        '''
-        ##iteration loop for later..?
-        for v in thisForm:
-            print("%s : %s" % (v,thisForm[v]))
-        '''
+        messageData = [self.name, self.title, self.content, self.format]
 
         if format is None:
             print('listAllMessagesInBoard')

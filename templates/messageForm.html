@@ -21,6 +21,12 @@
           <ul class="errors">{% for error in form.content.errors %}<li>{{ error }}</li>{% endfor %}</ul>
         {% endif %}
       </div>
+    <div class="url">
+      {{ form.url.label}} {{form.url(placeholder='an URL?')}}
+      {% if form.url.errors %}
+      <ul class="errors">{% for error in form.url.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+      {% endif %}
+    </div>
     <div class="submitbutton">
       <input id="submit" type="submit" value="Send">
     </div>
