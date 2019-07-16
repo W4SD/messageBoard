@@ -1,13 +1,11 @@
 <!-- board.html -->
 
-<div class="msgBoard">
-    <div class="titleRow">
-        {{ msgBoard[0] }} / {{msgBoard[1] }} <br>
-    </div>
-    <div class="contentRow">
-        {{ msgBoard[2] }} <br>
-    </div>
-    <div class="urlRow">
-        Here is url<br>
-    </div>
+<div class="newBoard">
+    {% for msg in msgBoard %}
+        <div class="newTitleRow">{{ msg.name }} / {{ msg.title }}</div>
+        <div class="newContent">{{ msg.content }}</div>
+    {% else %}
+        <div class="empty">No new messages!<br></div>
+    {% endfor %}
+    <br>
 </div>

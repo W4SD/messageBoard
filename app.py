@@ -15,14 +15,14 @@ def addMessageCount(value):
 def home():
     """Serve message form."""
     sendMessageForm = CreateMessage()
-    msgBoardData = ["","/ No new messages!"]
+    msgBoardData = []
     if request.method == 'POST':
         #if sendMessageForm.validate():
         sentMessage = ListMessages(request.form)
         allMessages.append(sentMessage)
         addMessageCount(1)
         print('List has', len(allMessages), 'objects')
-        msgBoardData = sentMessage.printMessage(allMessages)
+        msgBoardData = allMessages
     return render_template("main.html",
                             form=sendMessageForm,
                             count=totalMessages,

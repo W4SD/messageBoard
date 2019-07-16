@@ -30,6 +30,7 @@ class ListMessages():
         self.name = attributes.get('sender')
         self.title = attributes.get('title')
         self.content = attributes.get('content')
+        print(self.name, self.title, self.content)
         
     def printMessage(self, format=None):
         
@@ -44,4 +45,5 @@ class ListMessages():
             print('listAllMessagesInBoard')
             return messageData
         else:
+            print('exportMessages!')
             return 'Some'
