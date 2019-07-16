@@ -25,8 +25,23 @@ class CreateMessage(Form):
         submit = SubmitField('Send')
 
 class ListMessages():
+
+    def __init__(self, attributes, format=None):
+        self.name = attributes.get('sender')
+        self.title = attributes.get('title')
+        self.content = attributes.get('content')
+        
     def printMessage(self, format=None):
+        
+        messageData = [self.name, self.title, self.content]
+        '''
+        ##iteration loop for later..?
+        for v in thisForm:
+            print("%s : %s" % (v,thisForm[v]))
+        '''
+
         if format is None:
             print('listAllMessagesInBoard')
+            return messageData
         else:
             return 'Some'
