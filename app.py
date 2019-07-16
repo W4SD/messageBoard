@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request
 from formLogic import CreateMessage, ListMessages
 
 app = Flask(__name__,
@@ -17,12 +17,18 @@ def home():
     sendMessageForm = CreateMessage()
     msgBoardData = []
     if request.method == 'POST':
-        #if sendMessageForm.validate():
-        sentMessage = ListMessages(request.form)
-        allMessages.append(sentMessage)
-        addMessageCount(1)
-        print('List has', len(allMessages), 'objects')
-        msgBoardData = allMessages
+        thisMessage = CreateMessage(request.form)
+        if thisMessage.validate():
+            sentMessage = ListMessages(request.form)
+            allMessages.append(sentMessage)
+            addMessageCount(1)
+            print('List has', len(allMessages), 'objects')
+            msgBoardData = allMessages
+        else:
+            return render_template("main.html",
+                                form = thisMessage,
+                                count=totalMessages,
+                                msgBoard = allMessages)
     return render_template("main.html",
                             form=sendMessageForm,
                             count=totalMessages,
